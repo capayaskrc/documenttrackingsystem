@@ -85,3 +85,46 @@ $("#search").click(function(){
     });
 
 
+// Update Data
+
+$("#update").click(function(){
+
+    //unique tracking number   
+    var document_title=$("#title").get(0).value;
+    var doc_type=$("#doctype").get(0).value;
+    var document_origin=$("#docorigin").get(0).value;
+    var date_received=$("#datereceived").get(0).value;
+    var document_destination=$("#docdestination").get(0).value;
+    $.post("http://localhost/dtsapi/DocTS/api/public/searchDoc",
+    JSON.stringify({
+        dtnumber: dtnumber,
+        document_title: document_title,
+        doc_type: doc_type,
+        document_origin: document_origin,
+        date_recieved: date_recieved,
+        document_destination:document_destination,
+        tag: tag
+    }),
+    function(data, status){
+    
+    alert("Data: " + data + "\nStatus: " + status);
+    
+    });
+    
+    });
+
+
+//Delete Data
+
+$("#delete").click(function(){
+
+    $.post("http://localhost/api/public/deleteStudent",
+    JSON.stringify({
+    idnumber:idnumber
+    }),
+    function(data, status){
+    
+    alert("Data: " + data + "\nStatus: " + status);
+    
+    });
+    });
