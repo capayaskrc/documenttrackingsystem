@@ -21,14 +21,15 @@ USE `u475920781_Dts4d`;
 DROP TABLE IF EXISTS `document_fields`;
 
 CREATE TABLE `document_fields` (
-  `dtnumber` varchar(100) NOT NULL,
+  `idnumber` varchar(100) NOT NULL,
+  `dtnumber` varchar(100) DEFAULT NULL,
   `document_title` varchar(100) DEFAULT NULL,
   `doc_type` varchar(100) DEFAULT NULL,
   `document_origin` varchar(100) DEFAULT NULL,
   `date_recieved` varchar(100) DEFAULT NULL,
   `document_destination` varchar(100) DEFAULT NULL,
   `tag` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`dtnumber`)
+  PRIMARY KEY (`idnumber`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `document_fields` */
