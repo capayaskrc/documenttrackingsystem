@@ -90,6 +90,9 @@ table.table td a:hover {
 table.table td a.edit {
 	color: #FFC107;
 }
+table.table td a.print {
+	color: yellow;
+}
 table.table td a.delete {
 	color: #F44336;
 }
