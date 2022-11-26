@@ -1,11 +1,10 @@
 # Document-Tracking-System
 
-## Description
-A document tracking system is a web application that helps you automate accessing, searching, editing, and managing your electronic documents and files. The tracking system lets you see who accessed the file and allows you to limit who can view and modify the content of said files.
 
-# Table of Contents
+## Table of Contents
 
-1. [Module Description](#module-description)
+1. [Description](#description)
+2. [Features](#features)
 2. [Usage](#usage)
 3. [Reference](#reference)
 4. [Limitation](#limitation)
@@ -14,14 +13,11 @@ A document tracking system is a web application that helps you automate accessin
 7. [Contribution](#contribution)
 
 
-## Module Description
-Some text.
+## Description
+A document tracking system is a web application that helps you automate accessing, searching, editing, and managing your electronic documents and files. The tracking system lets you see who accessed the file and allows you to limit who can view and modify the content of said files.
+
+## Features
+Some text ... 
 
 ## Usage
-Some text.
-
-## LANDING PAGE
-
-Landing page is a....
-
-## DASHBOARD
+Some text ...
