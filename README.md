@@ -4,6 +4,6 @@ A document tracking system is a web application that helps you automate accessin
 
 ## LANDING PAGE
 
-Landing page ....
+Landing page is a....
 
 ## DASHBOARD
