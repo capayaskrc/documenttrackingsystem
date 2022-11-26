@@ -10,8 +10,8 @@ A document tracking system is a web application that helps you automate accessin
 3. [Reference](#reference)
 4. [Limitation](#limitation)
 5. [Credits](#credits)
-5. [License](#license)
-6. [Contribution](#contribution)
+6. [License](#license)
+7. [Contribution](#contribution)
 
 
 ## Module Description
