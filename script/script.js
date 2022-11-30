@@ -1,3 +1,5 @@
+setInterval(displayData, 10000);
+
 function displayData() {
     $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/fetchDoc",
         function (data, status) {
@@ -52,9 +54,7 @@ $(document).ready(function () {
                     alert("Data: " + data + "\nStatus: " + status);
                 });
             displayData();
-            $("#insert").attr("data-dismiss", "modal");
         });
-        $("#insert").removeAttr("data-dismiss", "modal");
     });
 
 
@@ -131,7 +131,6 @@ $(document).ready(function () {
                 function (data, status) {
                     alert("Data: " + data + "\nStatus: " + status);
                 });
-            $('#editDocumentModal').modal('hide');
             displayData();
         });
     })
@@ -154,7 +153,5 @@ $(document).ready(function () {
                 alert("Data: " + data + "\nStatus: " + status);
             });
         displayData();
-        $("#dete").attr("data-dismiss", "modal");
     });
-    $("#dete").removeAttr("data-dismiss");
 })
