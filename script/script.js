@@ -7,7 +7,7 @@ function displayData() {
 
                 row = row +
                     "<tr id='" + json.data[0].dtnumber + "'>" + "<td><span class='custom-checkbox'><input type='checkbox' id='selectAll'><label for='selectAll'></label></span></td>" +
-                    "<td>" + json.data[i].dtnumber + "</td><td>" + json.data[i].document_fields + "</td>" +
+                    "<td>" + json.data[i].dtnumber + "</td><td>" + json.data[i].document_title + "</td>" +
                     "<td>" + json.data[i].doc_type + "</td><td>" + json.data[i].document_origin + "</td>" +
                     "<td>" + json.data[i].date_received + "</td><td>" + json.data[i].tag + "</td>" +
                     "<td><a href='#editDocumentModal' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i>" +
@@ -75,7 +75,7 @@ $(document).ready(function () {
                     //result
                     var json = JSON.parse(data);
                     $("#data").get(0).innerHTML = "<tr id='" + json.data[0].dtnumber + "'>" + "<td><span class='custom-checkbox'><input type='checkbox' id='selectAll'><label for='selectAll'></label></span></td>" +
-                        "<td>" + json.data[0].dtnumber + "</td><td>" + json.data[0].document_fields + "</td>" +
+                        "<td>" + json.data[0].dtnumber + "</td><td>" + json.data[0].document_title + "</td>" +
                         "<td>" + json.data[0].doc_type + "</td><td>" + json.data[0].document_origin + "</td>" +
                         "<td>" + json.data[0].date_received + "</td><td>" + json.data[0].tag + "</td>" +
                         "<td><a href='#editDocumentModal' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i>" +
