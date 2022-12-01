@@ -1,7 +1,7 @@
 setInterval(displayData, 10000);
 
 function displayData() {
-    $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/fetchDoc",
+    $.post("http://localhost/dtsapi/DocTS/api/public/fetchDoc",
         function (data, status) {
             var json = JSON.parse(data);
             var row = "";
@@ -12,8 +12,9 @@ function displayData() {
                     "<td>" + json.data[i].dtnumber + "</td><td>" + json.data[i].document_title + "</td>" +
                     "<td>" + json.data[i].doc_type + "</td><td>" + json.data[i].document_origin + "</td>" +
                     "<td>" + json.data[i].date_received + "</td><td>" + json.data[i].tag + "</td>" +
-                    "<td><a id='print' href='#printDocumentUserModal' class='print' data-toggle='modal'><i id='print' class='material-icons' data-toggle='tooltip' title='Print'>&#xe555;</i>" +
-                    "</a><a id='history' href='#historyDocumentUserModal' class='history' data-toggle='modal'><i id='history' class='material-icons' data-toggle='tooltip' title='History'>&#xebe7;</i></a></td>" +
+                    "<td><a id='receive' href='#receiveDocumentModal' class='receive' data-toggle='modal'><i id='receive' class='material-icons' data-toggle='tooltip' title='Receive'>&#xe5ca;</i>" +
+                    "</a><a id='delete' href='#deleteDocumentModal' class='delete' data-toggle='modal'><i id='delete' class='material-icons' data-toggle='tooltip' title='Delete'>&#xE872;</i>" +
+                    "</a><a id='view' href='#viewDocumentModal' class='view' data-toggle='modal'><i id='view' class='material-icons' data-toggle='tooltip' title='View'>&#xe417;</i></a></td>" +
                     "</tr>";
 
             }
@@ -39,7 +40,7 @@ $(document).ready(function () {
             var date_received = $("#datereceived").get(0).value.toString();
             var document_destination = $("#docdestination").get(0).value;
             var tag = $("#tag").get(0).value;
-            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/insertDoc",
+            $.post("http://localhost/dtsapi/DocTS/api/public/insertDoc",
                 JSON.stringify({
                     dtnumber: dtnumber,
                     document_title: document_title,
@@ -63,7 +64,7 @@ $(document).ready(function () {
         $("#search").click(function () {
             var query = $("#search-in").get(0).value;
             //endpoint
-            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/searchDoc",
+            $.post("http://localhost/dtsapi/DocTS/api/public/searchDoc",
                 JSON.stringify(
                     //payload
                     {
@@ -77,18 +78,18 @@ $(document).ready(function () {
                         "<td>" + json.data[0].dtnumber + "</td><td>" + json.data[0].document_title + "</td>" +
                         "<td>" + json.data[0].doc_type + "</td><td>" + json.data[0].document_origin + "</td>" +
                         "<td>" + json.data[0].date_received + "</td><td>" + json.data[0].tag + "</td>" +
-                        "<td><a id='print' href='#printDocumentUserModal' class='print' data-toggle='modal'><i id='print' class='material-icons' data-toggle='tooltip' title='Print'>&#xe555;</i>" +
-                        "</a><a id='history' href='#historyDocumentUserModal' class='history' data-toggle='modal'><i id='history' class='material-icons' data-toggle='tooltip' title='History'>&#xebe7;</i></a></td>" +
+                        "<td><a id='receive' href='#receiveDocumentModal' class='receive' data-toggle='modal'><i id='receive' class='material-icons' data-toggle='tooltip' title='Receive'>&#xe5ca;</i>" +
+                        "</a><a id='delete' href='#deleteDocumentModal' class='delete' data-toggle='modal'><i id='delete' class='material-icons' data-toggle='tooltip' title='Delete'>&#xE872;</i>" +
+                        "</a><a id='view' href='#viewDocumentModal' class='view' data-toggle='modal'><i id='view' class='material-icons' data-toggle='tooltip' title='View'>&#xe417;</i></a></td>" +
                         "</tr>";
                 });
         });
     })
 
-    // Print view OR History view
     $("table").delegate("tr", "click", function (event) {
         var id = $(this).attr('id');
-        if (event.target.id === 'print') {
-            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/searchDoc",
+        if (event.target.id === 'view') {
+            $.post("http://localhost/dtsapi/DocTS/api/public/searchDoc",
                 JSON.stringify(
                     //payload
                     {
@@ -98,32 +99,34 @@ $(document).ready(function () {
                 function (data, status) {
                     //result
                     var json = JSON.parse(data);
-                    // $("#p-tn").text(json.data[0].dtnumber);
+                    $("#p-tn").text(json.data[0].dtnumber);
                     $("#p-title").text(json.data[0].document_title);
                     $("#p-type").text(json.data[0].doc_type);
                     $("#p-origin").text(json.data[0].document_origin);
                     $("#p-dr").text(new Date(json.data[0].date_received));
-                    $("#p-destination").text(json.data[0].document_destination);
                     $("#p-tag").text(json.data[0].tag);
                 });
+        } else if (event.target.id === 'delete'){
+            $("#idToDelete").text(id);
+            $.post("http://localhost/dtsapi/DocTS/api/public/deleteDoc",
+            JSON.stringify({
+                dtnumber: id
+            }),
+            function (data, status) {
+                alert("Data: " + data + "\nStatus: " + status);
+            });
+            displayData();
         } else {
-            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/searchDoc",
+            $.post("http://localhost/dtsapi/DocTS/api/public/searchDoc",
                 JSON.stringify(
                     //payload
                     {
-                        dtnumber: id
+                        dtnumber: id,
+                        // status: "received"
                     }
                 ),
                 function (data, status) {
-                    //result
-                    var json = JSON.parse(data);
-                    $("#h-tn").text(json.data[0].dtnumber);
-                    $("#h-received").text(json.data[0].document_title);
-                    $("#h-institution").text(json.data[0].doc_type);
-                    $("#h-sent").text(json.data[0].document_origin);
-                    $("#h-status").text(new Date(json.data[0].date_received));
-                    $("#h-remarks").text(json.data[0].document_destination);
-                    $("#h-duration").text(json.data[0].tag);
+                    alert("Data: " + data + "\nStatus: " + status);
                 });
         }
     });
