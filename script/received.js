@@ -8,7 +8,7 @@ function displayData() {
             for (var i = 0; i < json.data.length; i++) {
 
                 row = row +
-                    "<tr id='" + json.data[0].dtnumber + "'>" + "<td><span class='custom-checkbox'><input type='checkbox' id='selectAll'><label for='selectAll'></label></span></td>" +
+                    "<tr id='" + json.data[i].dtnumber + "'>" + "<td><span class='custom-checkbox'><input type='checkbox' id='selectAll'><label for='selectAll'></label></span></td>" +
                     "<td>" + json.data[i].dtnumber + "</td><td>" + json.data[i].document_title + "</td>" +
                     "<td>" + json.data[i].doc_type + "</td><td>" + json.data[i].document_origin + "</td>" +
                     "<td>" + json.data[i].date_received + "</td><td>" + json.data[i].tag + "</td>" +

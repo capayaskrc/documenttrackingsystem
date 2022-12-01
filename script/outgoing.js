@@ -1,14 +1,14 @@
 setInterval(displayData, 10000);
 
 function displayData() {
-    $.post("http://localhost/dtsapi/DocTS/api/public/fetchDoc",
+    $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/fetchDoc",
         function (data, status) {
             var json = JSON.parse(data);
             var row = "";
             for (var i = 0; i < json.data.length; i++) {
 
                 row = row +
-                    "<tr id='" + json.data[0].dtnumber + "'>" + "<td><span class='custom-checkbox'><input type='checkbox' id='selectAll'><label for='selectAll'></label></span></td>" +
+                    "<tr id='" + json.data[i].dtnumber + "'>" + "<td><span class='custom-checkbox'><input type='checkbox' id='selectAll'><label for='selectAll'></label></span></td>" +
                     "<td>" + json.data[i].dtnumber + "</td><td>" + json.data[i].document_title + "</td>" +
                     "<td>" + json.data[i].doc_type + "</td><td>" + json.data[i].document_origin + "</td>" +
                     "<td>" + json.data[i].date_received + "</td><td>" + json.data[i].tag + "</td>" +
@@ -38,7 +38,7 @@ $(document).ready(function () {
             var date_received = $("#datereceived").get(0).value.toString();
             var document_destination = $("#docdestination").get(0).value;
             var tag = $("#tag").get(0).value;
-            $.post("http://localhost/dtsapi/DocTS/api/public/insertDoc",
+            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/insertDoc",
                 JSON.stringify({
                     dtnumber: dtnumber,
                     document_title: document_title,
@@ -56,15 +56,12 @@ $(document).ready(function () {
         });
     });
 
-    
-
-
     //Search data
     $(document).ready(function () {
         $("#search").click(function () {
             var query = $("#search-in").get(0).value;
             //endpoint
-            $.post("http://localhost/dtsapi/DocTS/api/public/searchDoc",
+            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/searchDoc",
                 JSON.stringify(
                     //payload
                     {
@@ -91,10 +88,10 @@ $(document).ready(function () {
             $("#idToDelete").text(id);
         });
     })
-    $("#delete").click(function (id) {
+    $("#delete").click(function () {
         var dtnumber = $("#idToDelete").text();
         // alert(dtnumber);
-        $.post("http://localhost/dtsapi/DocTS/api/public/deleteDoc",
+        $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/deleteDoc",
             JSON.stringify({
                 dtnumber: dtnumber
             }),
