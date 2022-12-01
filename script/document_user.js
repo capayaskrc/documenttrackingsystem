@@ -83,4 +83,33 @@ $(document).ready(function () {
                 });
         });
     })
+
+    $("table").delegate("tr", "click", function () {
+        var id = $(this).attr('id');
+        $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/searchDoc",
+            JSON.stringify(
+                //payload
+                {
+                    dtnumber: id
+                }
+            ),
+            function (data, status) {
+                //result
+                var json = JSON.parse(data);
+                $("#h-tn").text(json.data[0].dtnumber);
+                $("#h-received").text(json.data[0].document_title);
+                $("#h-institution").text(json.data[0].doc_type);
+                $("#h-sent").text(json.data[0].document_origin);
+                $("#h-status").text(new Date(json.data[0].date_received));
+                $("#h-remarks").text(json.data[0].document_destination);
+                $("#h-duration").text(json.data[0].tag);
+            });
+    });
+
+
+
+
+
+
+
 })
