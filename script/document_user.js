@@ -12,8 +12,8 @@ function displayData() {
                     "<td>" + json.data[i].dtnumber + "</td><td>" + json.data[i].document_title + "</td>" +
                     "<td>" + json.data[i].doc_type + "</td><td>" + json.data[i].document_origin + "</td>" +
                     "<td>" + json.data[i].date_received + "</td><td>" + json.data[i].tag + "</td>" +
-                    "<td><a href='#printDocumentUserModal' class='print' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Print'>&#xe555;</i>" +
-                    "</a><a href='#historyDocumentUserModal' class='history' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='History'>&#xebe7;</i></a></td>" +
+                    "<td><a id='print' href='#printDocumentUserModal' class='print' data-toggle='modal'><i id='print' class='material-icons' data-toggle='tooltip' title='Print'>&#xe555;</i>" +
+                    "</a><a id='history' href='#historyDocumentUserModal' class='history' data-toggle='modal'><i id='history' class='material-icons' data-toggle='tooltip' title='History'>&#xebe7;</i></a></td>" +
                     "</tr>";
 
             }
@@ -77,39 +77,53 @@ $(document).ready(function () {
                         "<td>" + json.data[0].dtnumber + "</td><td>" + json.data[0].document_title + "</td>" +
                         "<td>" + json.data[0].doc_type + "</td><td>" + json.data[0].document_origin + "</td>" +
                         "<td>" + json.data[0].date_received + "</td><td>" + json.data[0].tag + "</td>" +
-                        "<td><a href='#printDocumentUserModal' class='print' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Print'>&#xe555;</i>" +
-                        "</a><a href='#historyDocumentUserModal' class='history' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='History'>&#xebe7;</i></a></td>" +
+                        "<td><a id='print' href='#printDocumentUserModal' class='print' data-toggle='modal'><i id='print' class='material-icons' data-toggle='tooltip' title='Print'>&#xe555;</i>" +
+                        "</a><a id='history' href='#historyDocumentUserModal' class='history' data-toggle='modal'><i id='history' class='material-icons' data-toggle='tooltip' title='History'>&#xebe7;</i></a></td>" +
                         "</tr>";
                 });
         });
     })
 
-    $("table").delegate("tr", "click", function () {
+    $("table").delegate("tr", "click", function (event) {
         var id = $(this).attr('id');
-        $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/searchDoc",
-            JSON.stringify(
-                //payload
-                {
-                    dtnumber: id
-                }
-            ),
-            function (data, status) {
-                //result
-                var json = JSON.parse(data);
-                $("#h-tn").text(json.data[0].dtnumber);
-                $("#h-received").text(json.data[0].document_title);
-                $("#h-institution").text(json.data[0].doc_type);
-                $("#h-sent").text(json.data[0].document_origin);
-                $("#h-status").text(new Date(json.data[0].date_received));
-                $("#h-remarks").text(json.data[0].document_destination);
-                $("#h-duration").text(json.data[0].tag);
-            });
+        if (event.target.id === 'print') {
+            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/searchDoc",
+                JSON.stringify(
+                    //payload
+                    {
+                        dtnumber: id
+                    }
+                ),
+                function (data, status) {
+                    //result
+                    var json = JSON.parse(data);
+                    // $("#p-tn").text(json.data[0].dtnumber);
+                    $("#p-title").text(json.data[0].document_title);
+                    $("#p-type").text(json.data[0].doc_type);
+                    $("#p-origin").text(json.data[0].document_origin);
+                    $("#p-dr").text(new Date(json.data[0].date_received));
+                    $("#p-destination").text(json.data[0].document_destination);
+                    $("#p-tag").text(json.data[0].tag);
+                });
+        } else {
+            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/searchDoc",
+                JSON.stringify(
+                    //payload
+                    {
+                        dtnumber: id
+                    }
+                ),
+                function (data, status) {
+                    //result
+                    var json = JSON.parse(data);
+                    $("#h-tn").text(json.data[0].dtnumber);
+                    $("#h-received").text(json.data[0].document_title);
+                    $("#h-institution").text(json.data[0].doc_type);
+                    $("#h-sent").text(json.data[0].document_origin);
+                    $("#h-status").text(new Date(json.data[0].date_received));
+                    $("#h-remarks").text(json.data[0].document_destination);
+                    $("#h-duration").text(json.data[0].tag);
+                });
+        }
     });
-
-
-
-
-
-
-
 })
