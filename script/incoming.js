@@ -1,7 +1,7 @@
 setInterval(displayData, 10000);
 
 function displayData() {
-    $.post("http://localhost/dtsapi/DocTS/api/public/fetchDoc",
+    $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/fetchDoc",
         function (data, status) {
             var json = JSON.parse(data);
             var row = "";
@@ -40,7 +40,7 @@ $(document).ready(function () {
             var date_received = $("#datereceived").get(0).value.toString();
             var document_destination = $("#docdestination").get(0).value;
             var tag = $("#tag").get(0).value;
-            $.post("http://localhost/dtsapi/DocTS/api/public/insertDoc",
+            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/insertDoc",
                 JSON.stringify({
                     dtnumber: dtnumber,
                     document_title: document_title,
@@ -64,7 +64,7 @@ $(document).ready(function () {
         $("#search").click(function () {
             var query = $("#search-in").get(0).value;
             //endpoint
-            $.post("http://localhost/dtsapi/DocTS/api/public/searchDoc",
+            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/searchDoc",
                 JSON.stringify(
                     //payload
                     {
@@ -89,7 +89,7 @@ $(document).ready(function () {
     $("table").delegate("tr", "click", function (event) {
         var id = $(this).attr('id');
         if (event.target.id === 'view') {
-            $.post("http://localhost/dtsapi/DocTS/api/public/searchDoc",
+            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/searchDoc",
                 JSON.stringify(
                     //payload
                     {
@@ -106,18 +106,18 @@ $(document).ready(function () {
                     $("#p-dr").text(new Date(json.data[0].date_received));
                     $("#p-tag").text(json.data[0].tag);
                 });
-        } else if (event.target.id === 'delete'){
+        } else if (event.target.id === 'delete') {
             $("#idToDelete").text(id);
-            $.post("http://localhost/dtsapi/DocTS/api/public/deleteDoc",
-            JSON.stringify({
-                dtnumber: id
-            }),
-            function (data, status) {
-                alert("Data: " + data + "\nStatus: " + status);
-            });
+            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/deleteDoc",
+                JSON.stringify({
+                    dtnumber: id
+                }),
+                function (data, status) {
+                    alert("Data: " + data + "\nStatus: " + status);
+                });
             displayData();
         } else {
-            $.post("http://localhost/dtsapi/DocTS/api/public/searchDoc",
+            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/searchDoc",
                 JSON.stringify(
                     //payload
                     {

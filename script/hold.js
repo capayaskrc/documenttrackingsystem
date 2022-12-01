@@ -1,7 +1,7 @@
 setInterval(displayData, 10000);
 
 function displayData() {
-    $.post("http://localhost/dtsapi/DocTS/api/public/fetchDoc",
+    $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/fetchDoc",
         function (data, status) {
             var json = JSON.parse(data);
             var row = "";
@@ -30,7 +30,7 @@ $(document).ready(function () {
         $("#search").click(function () {
             var query = $("#search-in").get(0).value;
             //endpoint
-            $.post("http://localhost/dtsapi/DocTS/api/public/searchDoc",
+            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/searchDoc",
                 JSON.stringify(
                     //payload
                     {
@@ -56,7 +56,7 @@ $(document).ready(function () {
     $(document).ready(function () {
         $("table").delegate("tr", "click", function () {
             var id = $(this).attr('id');
-            $.post("http://localhost/dtsapi/DocTS/api/public/searchDoc",
+            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/searchDoc",
                 JSON.stringify(
                     //payload
                     {
@@ -84,7 +84,7 @@ $(document).ready(function () {
             var date_received = $("#e-datereceived").get(0).value.toString();
             var document_destination = $("#e-destination").get(0).value;
             var tag = $("#e-tag").get(0).value;
-            $.post("http://localhost/dtsapi/DocTS/api/public/updateDoc",
+            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/updateDoc",
                 JSON.stringify({
                     dtnumber: dtnumber,
                     document_title: document_title,
@@ -111,7 +111,7 @@ $(document).ready(function () {
     $("#delete").click(function (id) {
         var dtnumber = $("#idToDelete").text();
         // alert(dtnumber);
-        $.post("http://localhost/dtsapi/DocTS/api/public/deleteDoc",
+        $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/deleteDoc",
             JSON.stringify({
                 dtnumber: dtnumber
             }),
