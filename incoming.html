@@ -70,7 +70,7 @@
             <li class="nav-item nav-profile">
               <a href="#" class="nav-link">
                 <div class="nav-profile-image">
-                  <img src="assets/images/faces/admin.png" alt="profile">
+                  <img href="#editProfileModal" src="assets/images/faces/admin.png" data-toggle="modal" title="Edit Profile" alt="profile">
                   <span class="login-status online"></span>
                   <!--change to offline or busy as needed-->
                 </div>
@@ -78,6 +78,7 @@
                   <span class="font-weight-bold mb-2">Fed Libadia II</span>
                   <span class="text-secondary text-small">User</span>
                 </div>
+                <i href="#changePasswordModal" class="mdi mdi mdi-border-color text-success nav-profile-badge" data-toggle="modal" title="Change Password"></i>
               </a>
             </li>
             <!-- FOR ADMIN & USER MODULE -->
@@ -407,6 +408,63 @@
               </div>
             </div>     
           </div>
+          <!-- Edit Profile Modal HTML -->
+          <div id="editProfileModal" class="modal fade">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <form>
+                  <div class="modal-header">
+                    <img src="assets/images/faces/admin.png" style="height: 300px; width: 300px; border-radius: 50%;" alt="profile">
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group">
+                      <label for="myfile"></label>
+                      <input type="file" id="myfile" name="myfile"><br><br>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input id="update" type="submit" class="btn btn-info" value="Update">
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- Change Password Modal HTML -->
+          <div id="changePasswordModal" class="modal fade">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <form>
+                  <div class="modal-header">
+                    <h4 class="modal-title">Change Password</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group">
+                      <label>Username</label>
+                      <input id="e-tn" type="text" class="form-control" disabled>
+                    </div>
+                    <div class="form-group">
+                      <label>Current Password</label>
+                      <input id="e-title" class="form-control" disabled>
+                    </div>
+                    <div class="form-group">
+                      <label>New Password</label>
+                      <input id="e-doctype" type="text" class="form-control" placeholder="New Password" required>
+                    </div>
+                    <div class="form-group">
+                      <label>Confirm Password</label>
+                      <input id="e-origin" type="text" class="form-control" placeholder="Confirm Password" required>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input id="update" type="submit" class="btn btn-info" value="Change">
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div> 
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->
           <footer class="footer">
