@@ -73,7 +73,8 @@
           <li class="nav-item nav-profile">
             <a href="#" class="nav-link">
               <div class="nav-profile-image">
-                <img href="#editProfileModal" src="assets/images/faces/admin.png" data-toggle="modal" title="Edit Profile" alt="profile">
+                <img href="#editProfileModal" src="assets/images/faces/admin.png" data-toggle="modal"
+                  title="Edit Profile" alt="profile">
                 <span class="login-status online"></span>
                 <!--change to offline or busy as needed-->
               </div>
@@ -81,7 +82,8 @@
                 <span class="font-weight-bold mb-2">Fed Libadia II</span>
                 <span class="text-secondary text-small">Administrator</span>
               </div>
-              <i href="#changePasswordModal" class="mdi mdi mdi-border-color text-success nav-profile-badge" data-toggle="modal" title="Change Password"></i>
+              <i href="#changePasswordModal" class="mdi mdi mdi-border-color text-success nav-profile-badge"
+                data-toggle="modal" title="Change Password"></i>
             </a>
           </li>
           <!-- FOR ADMIN & USER MODULE -->
@@ -228,7 +230,7 @@
                       <th>Actions</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody id="data">
                     <tr>
                       <td>fedlibadiaii</td>
                       <td>Fed Libaida II</td>
@@ -290,7 +292,7 @@
               </div>
             </div>
           </div>
-          <!-- Edit Modal HTML -->
+          <!-- Create Modal HTML -->
           <div id="addUserModal" class="modal fade">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -302,11 +304,15 @@
                   <div class="modal-body">
                     <div class="form-group">
                       <label>Username</label>
-                      <input type="text" class="form-control" required>
+                      <input id="username" type="text" class="form-control" required>
                     </div>
                     <div class="form-group">
                       <label>Name</label>
-                      <input type="text" class="form-control" required>
+                      <input id="name" type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                      <label>Email</label>
+                      <input id="email" type="email" class="form-control" required>
                     </div>
                     <div class="form-group">
                       <label>Role</label>
@@ -318,16 +324,16 @@
                     </div>
                     <div class="form-group">
                       <label>Position</label>
-                      <input type="text" class="form-control" required>
+                      <input id="position" type="text" class="form-control" required>
                     </div>
                     <div class="form-group">
                       <label>Status</label>
-                      <input type="text" class="form-control" required>
+                      <input id="status" type="text" class="form-control" required>
                     </div>
                   </div>
                   <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input id="add" type="submit" class="btn btn-success" value="Add">
+                    <input id="addU" type="submit" class="btn btn-success" value="Add">
                   </div>
                 </form>
               </div>
@@ -406,7 +412,8 @@
             <div class="modal-content">
               <form>
                 <div class="modal-header">
-                  <img src="assets/images/faces/admin.png" style="height: 300px; width: 300px; border-radius: 50%;" alt="profile">
+                  <img src="assets/images/faces/admin.png" style="height: 300px; width: 300px; border-radius: 50%;"
+                    alt="profile">
                 </div>
                 <div class="modal-body">
                   <div class="form-group">
@@ -456,7 +463,7 @@
               </form>
             </div>
           </div>
-        </div> 
+        </div>
         <!-- content-wrapper ends -->
         <!-- partial:../../partials/_footer.html -->
         <footer class="footer">
