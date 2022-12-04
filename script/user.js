@@ -1,17 +1,17 @@
 setInterval(displayData, 10000);
 
 function displayData() {
-    $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/fetchDoc",
+    $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/fetchUsers",
         function (data, status) {
             var json = JSON.parse(data);
             var row = "";
             for (var i = 0; i < json.data.length; i++) {
 
                 row = row +
-                    "<tr id='" + json.data[i].dtnumber + "'>" + "<td><span class='custom-checkbox'><input type='checkbox' id='selectAll'><label for='selectAll'></label></span></td>" +
-                    "<td>" + json.data[i].dtnumber + "</td><td>" + json.data[i].document_title + "</td>" +
-                    "<td>" + json.data[i].doc_type + "</td><td>" + json.data[i].document_origin + "</td>" +
-                    "<td>" + json.data[i].date_received + "</td><td>" + json.data[i].tag + "</td>" +
+                    "<tr id='" + json.data[i].userid + "'>" + "<td><span class='custom-checkbox'><input type='checkbox' id='selectAll'><label for='selectAll'></label></span></td>" +
+                    "<td>" + json.data[i].username + "</td><td>" + json.data[i].name + "</td>" +
+                    "<td>" + json.data[i].role + "</td><td>" + json.data[i].position + "</td>" +
+                    "<td>" + json.data[i].status + "</td>" +
                     "<td><a href='#editDocumentModal' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i>" +
                     "</a><a href='#deleteDocumentModal' class='delete' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Delete'>&#xE872;</i></a></td>" +
                     "</tr>";
