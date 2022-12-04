@@ -63,20 +63,20 @@ $(document).ready(function () {
         $("#search").click(function () {
             var query = $("#search-in").get(0).value;
             //endpoint
-            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/searchDoc",
+            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/searchUser",
                 JSON.stringify(
                     //payload
                     {
-                        dtnumber: query
+                        userid: query
                     }
                 ),
                 function (data, status) {
                     //result
                     var json = JSON.parse(data);
-                    $("#data").get(0).innerHTML = "<tr id='" + json.data[0].dtnumber + "'>" + "<td><span class='custom-checkbox'><input type='checkbox' id='selectAll'><label for='selectAll'></label></span></td>" +
-                        "<td>" + json.data[0].dtnumber + "</td><td>" + json.data[0].document_title + "</td>" +
-                        "<td>" + json.data[0].doc_type + "</td><td>" + json.data[0].document_origin + "</td>" +
-                        "<td>" + json.data[0].date_received + "</td><td>" + json.data[0].tag + "</td>" +
+                    $("#data").get(0).innerHTML = "<tr id='" + json.data[0].userid + "'>" + "<td><span class='custom-checkbox'><input type='checkbox' id='selectAll'><label for='selectAll'></label></span></td>" +
+                        "<td>" + json.data[0].username + "</td><td>" + json.data[0].name + "</td>" +
+                        "<td>" + json.data[0].role + "</td><td>" + json.data[0].position + "</td>" +
+                        "<td>" + json.data[0].status + "</td>" +
                         "<td><a href='#editDocumentModal' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i>" +
                         "</a><a href='#deleteDocumentModal' class='delete' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Delete'>&#xE872;</i></a></td>" +
                         "</tr>";
