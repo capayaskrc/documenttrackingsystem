@@ -21,7 +21,7 @@ USE `u475920781_Dts4d`;
 DROP TABLE IF EXISTS `document_fields`;
 
 CREATE TABLE `document_fields` (
-  `idnumber` varchar(100) NOT NULL,
+  `idnumber` int(100) NOT NULL AUTO_INCREMENT,
   `dtnumber` varchar(100) DEFAULT NULL,
   `document_title` varchar(100) DEFAULT NULL,
   `doc_type` varchar(100) DEFAULT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE `document_fields` (
   `document_destination` varchar(100) DEFAULT NULL,
   `tag` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`idnumber`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `document_fields` */
 
