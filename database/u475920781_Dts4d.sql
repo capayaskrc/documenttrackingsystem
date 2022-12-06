@@ -43,8 +43,11 @@ CREATE TABLE `user_info` (
   `username` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `password` varchar(100) DEFAULT NULL,
-  `profile_picture` bit(64) DEFAULT NULL,
+  `profile_picture` varchar(100) DEFAULT NULL,
   `role` varchar(100) DEFAULT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `position` varchar(100) DEFAULT NULL,
+  `status` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
