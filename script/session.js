@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    $("#auth").click(function () {
+        $.session.clear();
+    })
     $("#login").click(function () {
         var email = $("#email").get(0).value;
         var role = $("#role").get(0).value;
@@ -14,6 +17,7 @@ $(document).ready(function () {
                 let d = JSON.parse(data);
                 if (status === "success") {
                     alert("Log In Successful");
+                    $.session.set("login", true);
                     $.session.set("userid", d.data.userid);
                     $.session.set("name", d.data.name);
                     $.session.set("username", d.data.username);
