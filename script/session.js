@@ -1,8 +1,14 @@
 $(document).ready(function () {
-    $("#auth").click(function () {
-        $.session.clear();
-    })
     $("#login").click(function () {
+        if ($.session.remove("login")) {
+            $.session.remove("login");
+            $.session.remove("userid");
+            $.session.remove("name");
+            $.session.remove("username");
+            $.session.remove("email");
+            $.session.remove("role");
+            $.session.remove("position");
+        }
         var email = $("#email").get(0).value;
         var role = $("#role").get(0).value;
         var password = $("#password").get(0).value;
@@ -16,7 +22,7 @@ $(document).ready(function () {
             function (data, status) {
                 let d = JSON.parse(data);
                 if (status === "success") {
-                    alert("Log In Successful");
+                    // alert("Log In Successful");
                     $.session.set("login", true);
                     $.session.set("userid", d.data.userid);
                     $.session.set("name", d.data.name);
@@ -24,13 +30,14 @@ $(document).ready(function () {
                     $.session.set("email", d.data.email);
                     $.session.set("role", d.data.role);
                     $.session.set("position", d.data.position);
-                    alert("Welcome " + $.session.get("name"))
+                    alert("Log In Successful\nWelcome " + $.session.get("name"))
+                    $(location).attr("href", "index.html");
                 } else {
                     alert("Log In Failed");
                 }
                 // alert("Data: " + data + "\nStatus: " + status);
             }
         );
-        $(location).attr("href", "index.html");
+        // $(location).attr("href", "index.html");
     })
 })
