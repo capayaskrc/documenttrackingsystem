@@ -73,15 +73,17 @@
           <li class="nav-item nav-profile">
             <a href="#" class="nav-link">
               <div class="nav-profile-image">
-                <img href="#editProfileModal" src="assets/images/faces/admin.png" data-toggle="modal" title="Edit Profile" alt="profile">
+                <img href="#editProfileModal" src="assets/images/faces/admin.png" data-toggle="modal"
+                  title="Edit Profile" alt="profile">
                 <span class="login-status online"></span>
                 <!--change to offline or busy as needed-->
               </div>
               <div class="nav-profile-text d-flex flex-column">
-                <span class="font-weight-bold mb-2">Fed Libadia II</span>
-                <span class="text-secondary text-small">User</span>
+                <span id="user-name" class="font-weight-bold mb-2">Fed Libadia II</span>
+                <span id="user-position" class="text-secondary text-small">User</span>
               </div>
-              <i href="#changePasswordModal" class="mdi mdi mdi-border-color text-success nav-profile-badge" data-toggle="modal" title="Change Password"></i>
+              <i href="#changePasswordModal" class="mdi mdi mdi-border-color text-success nav-profile-badge"
+                data-toggle="modal" title="Change Password"></i>
             </a>
           </li>
           <!--FOR ADMIN & USER MODULE-->
@@ -93,79 +95,78 @@
           </li>
           <!--END FOR ADMIN & USER MODULE-->
           <br>
-          <li class="nav-item">
-            <span style="font-size: xx-small;">MASTER LIST</span>
+          <li id="admin-label" class="nav-item">
+            <!-- <span style="font-size: xx-small;">MASTER LIST</span> -->
           </li>
-          <!--FOR ADMIN MODULE-->
-          <li class="nav-item">
-            <a class="nav-link" href="document.html">
-              <span class="menu-title">All Documents</span>
-              <i class="mdi mdi-file-document menu-icon"></i>
-            </a>
+          <li id="admin-p" class="nav-item">
+            <!-- <a class="nav-link" href="document.html">
+            <span class="menu-title">All Documents</span>
+            <i class="mdi mdi-file-document menu-icon"></i>
+          </a> -->
           </li>
-          <!--END FOR ADMIN MODULE-->
-          <!--FOR USERS-->
-          <li class="nav-item">
-            <a class="nav-link" href="document_user.html">
-              <span class="menu-title">Documents</span>
-              <i class="mdi mdi-file menu-icon"></i>
-            </a>
+          <!-- END FOR ADMIN MODULE -->
+          <!-- FOR USER MODULE -->
+          <li id="user-doc" class="nav-item">
+            <!-- <a class="nav-link" href="document_user.html">
+            <span class="menu-title">Documents</span>
+            <i class="mdi mdi-file menu-icon"></i>
+          </a> -->
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="incoming.html">
-              <span class="menu-title">Incoming</span>
-              <i class="mdi mdi-download menu-icon"></i>
-            </a>
+          <li id="user-inc" class="nav-item">
+            <!-- <a class="nav-link" href="incoming.html">
+            <span class="menu-title">Incoming</span>
+            <i class="mdi mdi-download menu-icon"></i>
+          </a> -->
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="received.html">
-              <span class="menu-title">Received</span>
-              <i class="mdi mdi-email menu-icon"></i>
-            </a>
+          <li id="user-rec" class="nav-item">
+            <!-- <a class="nav-link" href="received.html">
+            <span class="menu-title">Received</span>
+            <i class="mdi mdi-email menu-icon"></i>
+          </a> -->
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="outgoing.html">
-              <span class="menu-title">Outgoing</span>
-              <i class="mdi mdi-upload menu-icon"></i>
-            </a>
+          <li id="user-out" class="nav-item">
+            <!-- <a class="nav-link" href="outgoing.html">
+            <span class="menu-title">Outgoing</span>
+            <i class="mdi mdi-upload menu-icon"></i>
+          </a> -->
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="hold.html">
-              <span class="menu-title">Hold</span>
-              <i class="mdi mdi-pause menu-icon"></i>
-            </a>
+          <li id="user-hold" class="nav-item">
+            <!-- <a class="nav-link" href="hold.html">
+            <span class="menu-title">Hold</span>
+            <i class="mdi mdi-pause menu-icon"></i>
+          </a> -->
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="returned.html">
-              <span class="menu-title">Returned</span>
-              <i class="mdi mdi-swap-horizontal menu-icon"></i>
-            </a>
+          <li id="user-ret" class="nav-item">
+            <!-- <a class="nav-link" href="returned.html">
+            <span class="menu-title">Returned</span>
+            <i class="mdi mdi-swap-horizontal menu-icon"></i>
+          </a> -->
           </li>
-          <!-- END FOR USERS-->
-          <!--FOR ADMIN & USER MODULE-->
-          <li class="nav-item">
-            <a class="nav-link" href="track_doc.html">
-              <span class="menu-title">Track Documents</span>
-              <i class="mdi mdi-magnify menu-icon"></i>
-            </a>
+          <!--END FOR USER MODULE-->
+          <!-- FOR ADMIN & USER MODULE -->
+          <li id="track-doc" class="nav-item">
+            <!-- <a class="nav-link" href="track_doc.html">
+            <span class="menu-title">Track Documents</span>
+            <i class="mdi mdi-magnify menu-icon"></i>
+          </a> -->
           </li>
-          <!--END FOR ADMIN & USER MODULE-->
+          <!-- END FOR ADMIN & USER MODULE -->
+          <!-- FOR ADMIN MODULE -->
           <br>
-          <li class="nav-item">
-            <span style="font-size: xx-small;">SETTINGS</span>
+          <li id="admin-settings" class="nav-item">
+            <!-- <span style="font-size: xx-small;">SETTINGS</span> -->
           </li>
-          <!--FOR ADMIN MODULE-->
-          <li class="nav-item">
-            <a class="nav-link" href="dmmmsu-mluc.html">
-              <span class="menu-title">DMMMSU-MLUC</span>
-              <i class="mdi mdi-home-map-marker menu-icon"></i>
-            </a>
+          <li id="admin-inst" class="nav-item">
+            <!-- <a class="nav-link" href="dmmmsu-mluc.html">
+            <span class="menu-title">DMMMSU-MLUC</span>
+            <i class="mdi mdi-home-map-marker menu-icon"></i>
+          </a> -->
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="users.html">
-              <span class="menu-title">User</span>
-              <i class="mdi mdi-account-multiple-outline menu-icon"></i>
-            </a>
+          <li id="admin-users" class="nav-item">
+            <!-- <a class="nav-link" href="users.html">
+            <span class="menu-title">User</span>
+            <i class="mdi mdi-account-multiple-outline menu-icon"></i>
+          </a> -->
           </li>
           <!--END FOR ADMIN MODULE-->
         </ul>
@@ -393,7 +394,8 @@
             <div class="modal-content">
               <form>
                 <div class="modal-header">
-                  <img src="assets/images/faces/admin.png" style="height: 300px; width: 300px; border-radius: 50%;" alt="profile">
+                  <img src="assets/images/faces/admin.png" style="height: 300px; width: 300px; border-radius: 50%;"
+                    alt="profile">
                 </div>
                 <div class="modal-body">
                   <div class="form-group">
@@ -443,7 +445,7 @@
               </form>
             </div>
           </div>
-        </div> 
+        </div>
         <!-- content-wrapper ends -->
         <!-- partial:../../partials/_footer.html -->
         <footer class="footer">
@@ -478,6 +480,9 @@
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src="assets/js/jquery.session.js"></script>
+  <script src="script/session.js"></script>
+  <script src="script/sidebar.js"></script>
   <script src="script/outgoing.js"></script>
   <!-- End All Document Table js -->
 </body>
