@@ -49,4 +49,30 @@ $(document).ready(function () {
                 '<i class = "mdi mdi-swap-horizontal menu-icon"></i></a>';
         }
     }
+    $("#update-password").click(function () {
+        var userid = $.session.get("userid");
+        var current_password = $("#current-pw").get(0).value;
+        var new_password = $("#new-pw").get(0).value;
+        var confirm_password = $("#confirm-pw").get(0).value;
+        if (new_password === confirm_password) {
+            $.post(
+                "http://localhost/dts_api/dtsapi/DocTS/api/public/changePassword",
+                JSON.stringify({
+                    userid: userid,
+                    current_password: current_password,
+                    new_password: new_password,
+                }),
+                function (data, status) {
+                    alert(data);
+                    if (status === "success") {
+                        alert("Password Changed Successful");
+                        // $(location).attr("href", "index.html");
+                    } else {
+                        alert("Log In Failed");
+                    }
+                    // alert("Data: " + data + "\nStatus: " + status);
+                }
+            );
+        }
+    })
 })
