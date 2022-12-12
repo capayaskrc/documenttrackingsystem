@@ -113,6 +113,7 @@ $(document).ready(function () {
                 if (status === "success") {
                     alert("Profile Updated!");
                     $.session.set("profile-pic", $.session.get("filepath"));
+                    $("#dp").attr("src", $.session.get("filepath"));
                     $.session.remove("filepath");
                 } else {
                     alert('Upload Failed!');
