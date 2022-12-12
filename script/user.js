@@ -83,4 +83,10 @@ $(document).ready(function () {
                 });
         });
     })
+
+    $("table").delegate("tr", "click", function (event) {
+        localStorage.setItem("dtnumber", $(this).attr('id'));
+        alert(localStorage.getItem("dtnumber"))
+        $(location).attr("href", "user-profile.html");
+    });
 })
