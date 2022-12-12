@@ -232,7 +232,7 @@
                       <th>Action</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody id="data">
                     <tr>
                       <td>
                         <span class="custom-checkbox">
@@ -310,12 +310,12 @@
                   <div class="modal-body">
                     <div class="form-group">
                       <label>School Name</label>
-                      <input type="text" class="form-control" required>
+                      <input id="school-name" type="text" class="form-control" required>
                     </div>
                   </div>
                   <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-success" value="Add">
+                    <input id="add-school" type="submit" class="btn btn-success" value="Add">
                   </div>
                 </form>
               </div>
@@ -463,6 +463,7 @@
   <script src="assets/js/jquery.session.js"></script>
   <script src="script/session.js"></script>
   <script src="script/sidebar.js"></script>
+  <script src="script/institution.js"></script>
   <!-- End All Document Table js -->
 </body>
 
