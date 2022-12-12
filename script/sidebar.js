@@ -2,6 +2,7 @@ $(document).ready(function () {
     if ($.session.get("login")) {
         $("#user-name").text($.session.get("name"));
         $("#user-position").text($.session.get("position"));
+        $("#dp").attr("src", $.session.get("profile-pic"));
 
         $("#track-doc").get(0).innerHTML = '<a class="nav-link" href="track_doc.html">' +
             '<span class="menu-title"> Track Documents </span>' +
@@ -80,7 +81,6 @@ $(document).ready(function () {
         var fd = new FormData();
         var files = $('#profile-pic')[0].files;
         var userid = $.session.get("userid");
-        // var filepath = "";
         // Check file selected or not
         if (files.length > 0) {
             fd.append('file', files[0]);
@@ -92,6 +92,7 @@ $(document).ready(function () {
                 processData: false,
                 success: function (response) {
                     if (response != 0) {
+                        $.session.set("filepath", response);
                         $("#profile-img").attr("src", response);
                         $(".preview img").show(); // Display image element
                     } else {
@@ -111,6 +112,8 @@ $(document).ready(function () {
             function (data, status) {
                 if (status === "success") {
                     alert("Profile Updated!");
+                    $.session.set("profile-pic", $.session.get("filepath"));
+                    $.session.remove("filepath");
                 } else {
                     alert('Upload Failed!');
                 }
