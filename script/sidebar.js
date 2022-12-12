@@ -92,9 +92,26 @@ $(document).ready(function () {
                 processData: false,
                 success: function (response) {
                     if (response != 0) {
-                        $.session.set("filepath", response);
                         $("#profile-img").attr("src", response);
                         $(".preview img").show(); // Display image element
+                        $.post(
+                            "http://localhost/dts_api/dtsapi/DocTS/api/public/changeProfilePic",
+                            JSON.stringify({
+                                userid: userid,
+                                img: response,
+                            }),
+                            function (data, status) {
+                                if (status === "success") {
+                                    alert("Profile Updated!");
+                                    $.session.remove("profile-pic");
+                                    $.session.set("profile-pic", response);
+                                    $("#dp").attr("src", response);
+                                } else {
+                                    alert('Upload Failed!');
+                                }
+                                // alert("Data: " + data + "\nStatus: " + status);
+                            }
+                        );
                     } else {
                         alert('file not uploaded');
                     }
@@ -103,23 +120,7 @@ $(document).ready(function () {
         } else {
             alert("Please select a file.");
         }
-        $.post(
-            "http://localhost/dts_api/dtsapi/DocTS/api/public/changeProfilePic",
-            JSON.stringify({
-                userid: userid,
-                img: $.session.get("filepath"),
-            }),
-            function (data, status) {
-                if (status === "success") {
-                    alert("Profile Updated!");
-                    $.session.set("profile-pic", $.session.get("filepath"));
-                    $("#dp").attr("src", $.session.get("filepath"));
-                    $.session.remove("filepath");
-                } else {
-                    alert('Upload Failed!');
-                }
-                // alert("Data: " + data + "\nStatus: " + status);
-            }
-        );
+        // $(location).attr("href", "index.html");
+        // 
     })
 })
