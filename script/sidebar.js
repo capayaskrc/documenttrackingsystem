@@ -2,6 +2,7 @@ $(document).ready(function () {
     if ($.session.get("login")) {
         $("#user-name").text($.session.get("name"));
         $("#user-position").text($.session.get("position"));
+        $("#dp").attr("src", $.session.get("profile-pic"));
 
         $("#track-doc").get(0).innerHTML = '<a class="nav-link" href="track_doc.html">' +
             '<span class="menu-title"> Track Documents </span>' +
@@ -74,5 +75,52 @@ $(document).ready(function () {
                 }
             );
         }
+    })
+
+    $("#changeImg").click(function () {
+        var fd = new FormData();
+        var files = $('#profile-pic')[0].files;
+        var userid = $.session.get("userid");
+        // Check file selected or not
+        if (files.length > 0) {
+            fd.append('file', files[0]);
+            $.ajax({
+                url: 'http://localhost/dts_api/dtsapi/DocTS/api/public/imageUpload.php',
+                type: 'post',
+                data: fd,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    if (response != 0) {
+                        $("#profile-img").attr("src", response);
+                        $(".preview img").show(); // Display image element
+                        $.post(
+                            "http://localhost/dts_api/dtsapi/DocTS/api/public/changeProfilePic",
+                            JSON.stringify({
+                                userid: userid,
+                                img: response,
+                            }),
+                            function (data, status) {
+                                if (status === "success") {
+                                    alert("Profile Updated!");
+                                    $.session.remove("profile-pic");
+                                    $.session.set("profile-pic", response);
+                                    $("#dp").attr("src", response);
+                                } else {
+                                    alert('Upload Failed!');
+                                }
+                                // alert("Data: " + data + "\nStatus: " + status);
+                            }
+                        );
+                    } else {
+                        alert('file not uploaded');
+                    }
+                },
+            });
+        } else {
+            alert("Please select a file.");
+        }
+        // $(location).attr("href", "index.html");
+        // 
     })
 })

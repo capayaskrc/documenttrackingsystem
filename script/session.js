@@ -4,6 +4,7 @@ $(document).ready(function () {
             $.session.remove("login");
             $.session.remove("userid");
             $.session.remove("name");
+            $.session.remove("profile-pic");
             $.session.remove("username");
             $.session.remove("email");
             $.session.remove("role");
@@ -27,6 +28,7 @@ $(document).ready(function () {
                     $.session.set("userid", d.data.userid);
                     $.session.set("name", d.data.name);
                     $.session.set("username", d.data.username);
+                    $.session.set("profile-pic", d.data.profile_pic);
                     $.session.set("email", d.data.email);
                     $.session.set("role", d.data.role);
                     $.session.set("position", d.data.position);
