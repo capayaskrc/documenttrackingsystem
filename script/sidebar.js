@@ -75,4 +75,47 @@ $(document).ready(function () {
             );
         }
     })
+
+    $("#changeImg").click(function () {
+        var fd = new FormData();
+        var files = $('#profile-pic')[0].files;
+        var userid = $.session.get("userid");
+        // var filepath = "";
+        // Check file selected or not
+        if (files.length > 0) {
+            fd.append('file', files[0]);
+            $.ajax({
+                url: 'http://localhost/dts_api/dtsapi/DocTS/api/public/imageUpload.php',
+                type: 'post',
+                data: fd,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    if (response != 0) {
+                        $("#profile-img").attr("src", response);
+                        $(".preview img").show(); // Display image element
+                    } else {
+                        alert('file not uploaded');
+                    }
+                },
+            });
+        } else {
+            alert("Please select a file.");
+        }
+        $.post(
+            "http://localhost/dts_api/dtsapi/DocTS/api/public/changeProfilePic",
+            JSON.stringify({
+                userid: userid,
+                img: $.session.get("filepath"),
+            }),
+            function (data, status) {
+                if (status === "success") {
+                    alert("Profile Updated!");
+                } else {
+                    alert('Upload Failed!');
+                }
+                // alert("Data: " + data + "\nStatus: " + status);
+            }
+        );
+    })
 })
