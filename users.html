@@ -231,7 +231,7 @@
                       <th>Username</th>
                       <th>Name</th>
                       <th>Role</th>
-                      <th>Position</th>
+                      <th>School</th>
                       <th>Status</th>
                       <th>Actions</th>
                     </tr>
@@ -247,7 +247,7 @@
                       <td>fedlibadiaii</td>
                       <td>Fed Libaida II</td>
                       <td>Administrator</td>
-                      <td>Student</td>
+                      <td>DMMMSU-MLUC</td>
                       <td>Active</td>
                       <td>
                         <a href="#editUserModal" class="edit" data-toggle="modal">
@@ -341,8 +341,12 @@
                       </select>
                     </div>
                     <div class="form-group">
-                      <label>Position</label>
-                      <input id="position" type="text" class="form-control" required>
+                      <label>School</label>
+                      <select class="form-control" id="pillSelect" required name="school">
+                        <option disabled selected>Select School</option>
+                        <option value="staff">DMMMSU-SLUC</option>
+                        <option value="admin">DMMMSU-NLUC</option>
+                      </select>
                     </div>
                     <div class="form-group">
                       <label>Status</label>
