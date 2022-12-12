@@ -10,9 +10,11 @@ function displayData() {
                 row = row +
                     "<tr id='" + json.data[i].id + "'>" + "<td><span class='custom-checkbox'><input type='checkbox' id='selectAll'><label for='selectAll'></label></span></td>" +
                     "<td>" + json.data[i].school_name + "</td><td>" +
-                    "<td><a href='#editDocumentModal' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i>" +
-                    "</a><a href='#deleteDocumentModal' class='delete' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Delete'>&#xE872;</i></a></td>" +
-                    "</tr>";
+                    '<td> <a id="edit" href="#editSchoolModal" class="edit" data-toggle="modal">' +
+                    '<i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>' +
+                    '</a><a id="delete" href="#deleteSchoolModal" class="delete" data-toggle="modal">' +
+                    '<i id="delete" class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>' +
+                    '</a></td>';
 
             }
             $("#data").get(0).innerHTML = row;
@@ -58,11 +60,53 @@ $(document).ready(function () {
                     //result
                     var json = JSON.parse(data);
                     $("#data").get(0).innerHTML = "<tr id='" + json.data[0].id + "'>" + "<td><span class='custom-checkbox'><input type='checkbox' id='selectAll'><label for='selectAll'></label></span></td>" +
-                        "<td>" + json.data[0].school_name + "</td><td>" +
-                        "<td><a href='#editDocumentModal' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i>" +
-                        "</a><a href='#deleteDocumentModal' class='delete' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Delete'>&#xE872;</i></a></td>" +
-                        "</tr>";
+                        "<td>" + json.data[0].school_name + "</td>" +
+                        '<td> <a id="edit" href="#editSchoolModal" class="edit" data-toggle="modal">' +
+                        '<i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>' +
+                        '</a><a id="delete" href="#deleteSchoolModal" class="delete" data-toggle="modal">' +
+                        '<i id="delete" class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>' +
+                        '</a></td>';
                 });
         });
     })
+
+    $("table").delegate("tr", "click", function (event) {
+        var id = $(this).attr('id');
+        // alert(id)
+        if (event.target.id === 'delete') {
+            // $("#idToDelete").text(id);
+            $("#delete-school").click(function () {
+                $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/deleteSchool",
+                    JSON.stringify({
+                        id: id
+                    }),
+                    function (data, status) {
+                        if (status === "success") {
+                            alert("Successfully deleted!")
+                        } else {
+                            alert("Delete Failed")
+                        }
+                    });
+            })
+            displayData();
+        } else {
+            $("#edit-school").click(function () {
+                alert(id)
+                var school_name = $("#schoolName").get(0).value;
+                alert(school_name)
+                $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/updateSchool",
+                    JSON.stringify(
+                        //payload
+                        {
+                            id: id,
+                            school_name: school_name
+                        }
+                    ),
+                    function (data, status) {
+                        alert("Data: " + data + "\nStatus: " + status);
+                    });
+            })
+            displayData();
+        }
+    });
 })
