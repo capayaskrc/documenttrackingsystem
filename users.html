@@ -230,8 +230,8 @@
                       </th>
                       <th>Username</th>
                       <th>Name</th>
-                      <th>Role</th>
                       <th>School</th>
+                      <th>Position</th>
                       <th>Status</th>
                       <th>Actions</th>
                     </tr>
@@ -333,8 +333,12 @@
                       <input id="email" type="email" class="form-control" required>
                     </div>
                     <div class="form-group">
+                      <label>Position</label>
+                      <input id="position" type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
                       <label>Role</label>
-                      <select class="form-control" id="pillSelect" required name="role">
+                      <select class="form-control" id="role" required name="role">
                         <option disabled selected>Select Role</option>
                         <option value="staff">User</option>
                         <option value="admin">Administrator</option>
@@ -342,15 +346,20 @@
                     </div>
                     <div class="form-group">
                       <label>School</label>
-                      <select class="form-control" id="pillSelect" required name="school">
-                        <option disabled selected>Select School</option>
-                        <option value="staff">DMMMSU-SLUC</option>
-                        <option value="admin">DMMMSU-NLUC</option>
+                      <select class="form-control" id="school" required name="school">
+                        <!-- <option disabled selected>Select School</option>
+                        <option value="DMMMSU-SLUC">DMMMSU-SLUC</option>
+                        <option value="DMMMSU-NLUC">DMMMSU-NLUC</option> -->
                       </select>
                     </div>
                     <div class="form-group">
                       <label>Status</label>
-                      <input id="status" type="text" class="form-control" required>
+                      <!-- <input id="status" type="text" class="form-control" required> -->
+                      <select class="form-control" id="status" required name="status">
+                        <option disabled selected>Select School</option>
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                      </select>
                     </div>
                   </div>
                   <div class="modal-footer">
