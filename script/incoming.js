@@ -1,7 +1,10 @@
 setInterval(displayData, 10000);
 
 function displayData() {
-    $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/fetchDoc",
+    $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/fetchIncomingDoc",
+        JSON.stringify({
+            userSchool: $.session.get("school"),
+        }),
         function (data, status) {
             var json = JSON.parse(data);
             var row = "";
@@ -117,12 +120,12 @@ $(document).ready(function () {
                 });
             displayData();
         } else {
-            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/searchDoc",
+            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/receiveDoc",
                 JSON.stringify(
                     //payload
                     {
                         dtnumber: id,
-                        // status: "received"
+                        date_received: new Date()
                     }
                 ),
                 function (data, status) {
