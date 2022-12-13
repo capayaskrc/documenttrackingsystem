@@ -82,6 +82,7 @@ $(document).ready(function () {
                                     document_destination: document_destination,
                                     tag: tag,
                                     attachment: response,
+                                    receive: "false"
                                 }),
                                 function (data, status) {
                                     alert("Data: " + data + "\nStatus: " + status);
