@@ -305,25 +305,37 @@
                       <label>Title</label>
                       <textarea id="title" class="form-control" required></textarea>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <label>Type</label>
                       <input id="doctype" type="text" class="form-control" required>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                       <label>Origin</label>
-                      <input id="docorigin" type="text" class="form-control" required>
+                      <input id="docorigin" type="text" class="form-control" disabled>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <label>Date Received</label>
                       <input id="datereceived" type="date" class="form-control" required>
-                    </div>
-                    <div class="form-group">
+                    </div> -->
+                    <!-- <div class="form-group">
                       <label>Destination</label>
                       <input id="docdestination" type="text" class="form-control" required>
+                    </div> -->
+                    <div class="form-group">
+                      <label>Destination</label>
+                      <select class="form-control" id="destination" required name="destination">
+                        <!-- <option disabled selected>Select School</option>
+                        <option value="DMMMSU-SLUC">DMMMSU-SLUC</option>
+                        <option value="DMMMSU-NLUC">DMMMSU-NLUC</option> -->
+                      </select>
                     </div>
                     <div class="form-group">
                       <label>Tags</label>
                       <input id="tag" type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="attachment"></label>
+                      <input id="attachment" type="file" name="attachment"><br><br>
                     </div>
                   </div>
                   <div class="modal-footer">

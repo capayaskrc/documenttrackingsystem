@@ -1,7 +1,10 @@
 setInterval(displayData, 10000);
 
 function displayData() {
-    $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/fetchDoc",
+    $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/fetchReceivedDoc",
+        JSON.stringify({
+            userSchool: $.session.get("school"),
+        }),
         function (data, status) {
             var json = JSON.parse(data);
             var row = "";

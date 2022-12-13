@@ -20,40 +20,82 @@ function displayData() {
             $("#data").get(0).innerHTML = row;
         });
 }
+
+function getSchool() {
+    $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/fetchSchools",
+        function (data, status) {
+            var json = JSON.parse(data);
+            var row = "<option disabled selected>Select School</option>";
+            for (var i = 0; i < json.data.length; i++) {
+
+                row = row + '<option value="' + json.data[i].school_name + '">' + json.data[i].school_name + '</option>';
+
+            }
+            $("#destination").get(0).innerHTML = row;
+        });
+}
+
 //fetch data from database using API
 $(document).ready(function () {
     $(window).on("load", function () {
         displayData();
     });
 
+    getSchool();
+
     // Save data to the database using api
     $(document).ready(function () {
         $("#ad").click(function () {
             $("#tn").val((new Date().getTime()).toString(10));
+            $("#docorigin").val($.session.get("school"));
         })
         $("#insert").click(function () {
             var dtnumber = $("#tn").get(0).value;
             var document_title = $("#title").get(0).value;
-            var doc_type = $("#doctype").get(0).value;
+            // var doc_type = $("#doctype").get(0).value;
             var document_origin = $("#docorigin").get(0).value;
-            var date_received = $("#datereceived").get(0).value.toString();
-            var document_destination = $("#docdestination").get(0).value;
+            // var date_received = $("#datereceived").get(0).value.toString();
+            var date_sent = new Date();
+            var document_destination = $("#destination").get(0).value;
             var tag = $("#tag").get(0).value;
-            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/insertDoc",
-                JSON.stringify({
-                    dtnumber: dtnumber,
-                    document_title: document_title,
-                    doc_type: doc_type,
-                    document_origin: document_origin,
-                    date_received: date_received,
-                    document_destination: document_destination,
-                    tag: tag
 
-                }),
-                function (data, status) {
-                    alert("Data: " + data + "\nStatus: " + status);
+            var fd = new FormData();
+            var files = $('#attachment')[0].files;
+            if (files.length > 0) {
+                fd.append('file', files[0]);
+                $.ajax({
+                    url: 'http://localhost/dts_api/dtsapi/DocTS/api/public/fileAttachment.php',
+                    type: 'post',
+                    data: fd,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        if (response != 0) {
+                            var doc_type = response.substring(response.lastIndexOf('.') + 1, response.length) || response;
+                            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/insertDoc",
+                                JSON.stringify({
+                                    dtnumber: dtnumber,
+                                    document_title: document_title,
+                                    doc_type: doc_type,
+                                    document_origin: document_origin,
+                                    date_sent: date_sent,
+                                    document_destination: document_destination,
+                                    tag: tag,
+                                    attachment: response,
+                                    receive: "false"
+                                }),
+                                function (data, status) {
+                                    alert("Data: " + data + "\nStatus: " + status);
+                                });
+                        } else {
+                            alert('file not uploaded');
+                        }
+                    },
                 });
-            displayData();
+            } else {
+                alert("Please select a file.");
+            }
+            // displayData();
         });
     });
 
