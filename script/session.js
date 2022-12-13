@@ -9,6 +9,7 @@ $(document).ready(function () {
             $.session.remove("email");
             $.session.remove("role");
             $.session.remove("position");
+            $.session.remove("school");
         }
         var email = $("#email").get(0).value;
         var role = $("#role").get(0).value;
@@ -32,6 +33,7 @@ $(document).ready(function () {
                     $.session.set("email", d.data.email);
                     $.session.set("role", d.data.role);
                     $.session.set("position", d.data.position);
+                    $.session.set("school", d.data.school);
                     alert("Log In Successful\nWelcome " + $.session.get("name"))
                     $(location).attr("href", "index.html");
                 } else {
