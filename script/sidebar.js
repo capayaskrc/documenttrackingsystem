@@ -49,6 +49,8 @@ $(document).ready(function () {
                 '<span class="menu-title"> Returned </span>' +
                 '<i class = "mdi mdi-swap-horizontal menu-icon"></i></a>';
         }
+    } else {
+        $(location).attr("href", "login.html")
     }
     $("#update-password").click(function () {
         var userid = $.session.get("userid");
