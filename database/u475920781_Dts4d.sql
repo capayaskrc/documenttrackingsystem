@@ -29,10 +29,21 @@ CREATE TABLE `document_fields` (
   `date_recieved` varchar(100) DEFAULT NULL,
   `document_destination` varchar(100) DEFAULT NULL,
   `tag` varchar(100) DEFAULT NULL,
+  `date_sent` varchar(100) DEFAULT NULL,
+  `attachment` varchar(255) DEFAULT NULL,
+  `receive` varchar(5) DEFAULT NULL,
   PRIMARY KEY (`idnumber`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
-/*Data for the table `document_fields` */
+/*Table structure for table `school` */
+
+DROP TABLE IF EXISTS `school`;
+
+CREATE TABLE `school` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `school_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 /*Table structure for table `user_info` */
 
@@ -48,10 +59,9 @@ CREATE TABLE `user_info` (
   `name` varchar(100) DEFAULT NULL,
   `position` varchar(100) DEFAULT NULL,
   `status` varchar(100) DEFAULT NULL,
+  `school` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-/*Data for the table `user_info` */
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
