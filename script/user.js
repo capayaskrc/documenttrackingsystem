@@ -1,7 +1,7 @@
 setInterval(displayData, 10000);
 
 function displayData() {
-    $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/fetchUsers",
+    $.post("https://dts4d.fusiontechph.com/api/public/fetchUsers",
         function (data, status) {
             var json = JSON.parse(data);
             var row = "";
@@ -22,7 +22,7 @@ function displayData() {
 }
 
 function getSchool() {
-    $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/fetchSchools",
+    $.post("https://dts4d.fusiontechph.com/api/public/fetchSchools",
         function (data, status) {
             var json = JSON.parse(data);
             var row = "<option disabled selected>Select School</option>";
@@ -39,9 +39,8 @@ function getSchool() {
 $(document).ready(function () {
     $(window).on("load", function () {
         displayData();
+        getSchool();
     });
-
-    getSchool();
 
     // Save data to the database using api
     $(document).ready(function () {
@@ -55,13 +54,13 @@ $(document).ready(function () {
             var email = $("#email").get(0).value;
             var school = $("#school").get(0).value;
             // var tag = $("#tag").get(0).value;
-            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/addUser",
+            $.post("https://dts4d.fusiontechph.com/api/public//addUser",
                 JSON.stringify({
                     id: id,
                     username: username,
                     name: name,
                     email: email,
-                    pp: "http://localhost/dts_api/dtsapi/DocTS/api/images/default.png",
+                    pp: "https://dts4d.fusiontechph.com/api/public/default.png",
                     role: role,
                     position: position,
                     status: status,
@@ -82,7 +81,7 @@ $(document).ready(function () {
         $("#search").click(function () {
             var query = $("#search-in").get(0).value;
             //endpoint
-            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/searchUser",
+            $.post("https://dts4d.fusiontechph.com/api/public/searchUser",
                 JSON.stringify(
                     //payload
                     {

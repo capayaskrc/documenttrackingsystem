@@ -1,7 +1,7 @@
 setInterval(displayData, 10000);
 
 function displayData() {
-    $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/fetchReceivedDoc",
+    $.post("https://dts4d.fusiontechph.com/api/public/fetchReceivedDoc",
         JSON.stringify({
             userSchool: $.session.get("school"),
         }),
@@ -42,7 +42,7 @@ $(document).ready(function () {
             var date_received = $("#datereceived").get(0).value.toString();
             var document_destination = $("#docdestination").get(0).value;
             var tag = $("#tag").get(0).value;
-            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/insertDoc",
+            $.post("https://dts4d.fusiontechph.com/api/public/insertDoc",
                 JSON.stringify({
                     dtnumber: dtnumber,
                     document_title: document_title,
@@ -66,7 +66,7 @@ $(document).ready(function () {
         $("#search").click(function () {
             var query = $("#search-in").get(0).value;
             //endpoint
-            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/searchDoc",
+            $.post("https://dts4d.fusiontechph.com/api/public/searchDoc",
                 JSON.stringify(
                     //payload
                     {
@@ -91,7 +91,7 @@ $(document).ready(function () {
     $("table").delegate("tr", "click", function (event) {
         var id = $(this).attr('id');
         if (event.target.id === 'settings') {
-            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/searchDoc",
+            $.post("https://dts4d.fusiontechph.com/api/public/searchDoc",
                 JSON.stringify(
                     //payload
                     {
@@ -110,7 +110,7 @@ $(document).ready(function () {
                     // $("#p-tag").text(json.data[0].tag);
                 });
         } else {
-            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/searchDoc",
+            $.post("https://dts4d.fusiontechph.com/api/public/searchDoc",
                 JSON.stringify(
                     //payload
                     {

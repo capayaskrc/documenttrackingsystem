@@ -59,7 +59,7 @@ $(document).ready(function () {
         var confirm_password = $("#confirm-pw").get(0).value;
         if (new_password === confirm_password) {
             $.post(
-                "http://localhost/dts_api/dtsapi/DocTS/api/public/changePassword",
+                "https://dts4d.fusiontechph.com/api/public/changePassword",
                 JSON.stringify({
                     userid: userid,
                     current_password: current_password,
@@ -87,7 +87,7 @@ $(document).ready(function () {
         if (files.length > 0) {
             fd.append('file', files[0]);
             $.ajax({
-                url: 'http://localhost/dts_api/dtsapi/DocTS/api/public/imageUpload.php',
+                url: 'https://dts4d.fusiontechph.com/api/public/imageUpload.php',
                 type: 'post',
                 data: fd,
                 contentType: false,
@@ -97,7 +97,7 @@ $(document).ready(function () {
                         $("#profile-img").attr("src", response);
                         $(".preview img").show(); // Display image element
                         $.post(
-                            "http://localhost/dts_api/dtsapi/DocTS/api/public/changeProfilePic",
+                            "https://dts4d.fusiontechph.com/api/public/changeProfilePic",
                             JSON.stringify({
                                 userid: userid,
                                 img: response,

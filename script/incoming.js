@@ -1,7 +1,7 @@
 setInterval(displayData, 10000);
 
 function displayData() {
-    $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/fetchIncomingDoc",
+    $.post("https://dts4d.fusiontechph.com/api/public/fetchIncomingDoc",
         JSON.stringify({
             userSchool: $.session.get("school"),
         }),
@@ -43,7 +43,7 @@ $(document).ready(function () {
             var date_received = $("#datereceived").get(0).value.toString();
             var document_destination = $("#docdestination").get(0).value;
             var tag = $("#tag").get(0).value;
-            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/insertDoc",
+            $.post("https://dts4d.fusiontechph.com/api/public/insertDoc",
                 JSON.stringify({
                     dtnumber: dtnumber,
                     document_title: document_title,
@@ -67,7 +67,7 @@ $(document).ready(function () {
         $("#search").click(function () {
             var query = $("#search-in").get(0).value;
             //endpoint
-            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/searchDoc",
+            $.post("https://dts4d.fusiontechph.com/api/public/searchDoc",
                 JSON.stringify(
                     //payload
                     {
@@ -92,7 +92,7 @@ $(document).ready(function () {
     $("table").delegate("tr", "click", function (event) {
         var id = $(this).attr('id');
         if (event.target.id === 'view') {
-            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/searchDoc",
+            $.post("https://dts4d.fusiontechph.com/api/public/searchDoc",
                 JSON.stringify(
                     //payload
                     {
@@ -111,7 +111,7 @@ $(document).ready(function () {
                 });
         } else if (event.target.id === 'delete') {
             $("#idToDelete").text(id);
-            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/deleteDoc",
+            $.post("https://dts4d.fusiontechph.com/api/public/deleteDoc",
                 JSON.stringify({
                     dtnumber: id
                 }),
@@ -120,7 +120,7 @@ $(document).ready(function () {
                 });
             displayData();
         } else {
-            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/receiveDoc",
+            $.post("https://dts4d.fusiontechph.com/api/public/receiveDoc",
                 JSON.stringify(
                     //payload
                     {

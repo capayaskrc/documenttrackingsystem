@@ -1,7 +1,7 @@
 setInterval(displayData, 10000);
 
 function displayData() {
-    $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/fetchDoc",
+    $.post("https://dts4d.fusiontechph.com/api/public/fetchDoc",
         function (data, status) {
             var json = JSON.parse(data);
             var row = "";
@@ -22,7 +22,7 @@ function displayData() {
 }
 
 function getSchool() {
-    $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/fetchSchools",
+    $.post("https://dts4d.fusiontechph.com/api/public/fetchSchools",
         function (data, status) {
             var json = JSON.parse(data);
             var row = "<option disabled selected>Select School</option>";
@@ -64,7 +64,7 @@ $(document).ready(function () {
             if (files.length > 0) {
                 fd.append('file', files[0]);
                 $.ajax({
-                    url: 'http://localhost/dts_api/dtsapi/DocTS/api/public/fileAttachment.php',
+                    url: 'https://dts4d.fusiontechph.com/api/public/fileAttachment.php',
                     type: 'post',
                     data: fd,
                     contentType: false,
@@ -72,7 +72,7 @@ $(document).ready(function () {
                     success: function (response) {
                         if (response != 0) {
                             var doc_type = response.substring(response.lastIndexOf('.') + 1, response.length) || response;
-                            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/insertDoc",
+                            $.post("https://dts4d.fusiontechph.com/api/public/insertDoc",
                                 JSON.stringify({
                                     dtnumber: dtnumber,
                                     document_title: document_title,
@@ -105,7 +105,7 @@ $(document).ready(function () {
         $("#search").click(function () {
             var query = $("#search-in").get(0).value;
             //endpoint
-            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/searchDoc",
+            $.post("https://dts4d.fusiontechph.com/api/public/searchDoc",
                 JSON.stringify(
                     //payload
                     {
@@ -130,7 +130,7 @@ $(document).ready(function () {
     $("table").delegate("tr", "click", function (event) {
         var id = $(this).attr('id');
         if (event.target.id === 'print') {
-            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/searchDoc",
+            $.post("https://dts4d.fusiontechph.com/api/public/searchDoc",
                 JSON.stringify(
                     //payload
                     {
@@ -149,7 +149,7 @@ $(document).ready(function () {
                     $("#p-tag").text(json.data[0].tag);
                 });
         } else {
-            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/searchDoc",
+            $.post("https://dts4d.fusiontechph.com/api/public/searchDoc",
                 JSON.stringify(
                     //payload
                     {

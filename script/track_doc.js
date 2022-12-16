@@ -5,7 +5,7 @@ $(document).ready(function () {
         $("#search").click(function () {
             var query = $("#query").get(0).value;
             //endpoint
-            $.post("http://localhost/dtsapi/DocTS/api/public/trackDoc",
+            $.post("https://dts4d.fusiontechph.com/api/public/trackDoc",
                 JSON.stringify(
                     //payload
                     {

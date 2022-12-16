@@ -1,7 +1,7 @@
 setInterval(displayData, 10000);
 
 function displayData() {
-    $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/fetchSchools",
+    $.post("https://dts4d.fusiontechph.com/api/public/fetchSchools",
         function (data, status) {
             var json = JSON.parse(data);
             var row = "";
@@ -30,8 +30,9 @@ $(document).ready(function () {
     $(document).ready(function () {
         $("#add-school").click(function () {
             var school_name = $("#school-name").get(0).value;
+            alert(school_name)
             // var tag = $("#tag").get(0).value;
-            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/addSchool",
+            $.post("https://dts4d.fusiontechph.com/api/public/addSchool",
                 JSON.stringify({
                     school_name: school_name,
                 }),
@@ -49,7 +50,7 @@ $(document).ready(function () {
         $("#search").click(function () {
             var query = $("#search-in").get(0).value;
             //endpoint
-            $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/searchUser",
+            $.post("https://dts4d.fusiontechph.com/api/public/searchSchool",
                 JSON.stringify(
                     //payload
                     {
@@ -76,7 +77,7 @@ $(document).ready(function () {
         if (event.target.id === 'delete') {
             // $("#idToDelete").text(id);
             $("#delete-school").click(function () {
-                $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/deleteSchool",
+                $.post("https://dts4d.fusiontechph.com/api/public/deleteSchool",
                     JSON.stringify({
                         id: id
                     }),
@@ -94,7 +95,7 @@ $(document).ready(function () {
                 alert(id)
                 var school_name = $("#schoolName").get(0).value;
                 alert(school_name)
-                $.post("http://localhost/dts_api/dtsapi/DocTS/api/public/updateSchool",
+                $.post("https://dts4d.fusiontechph.com/api/public/updateSchool",
                     JSON.stringify(
                         //payload
                         {

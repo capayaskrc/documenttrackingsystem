@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $("#login").click(function () {
-        if ($.session.remove("login")) {
+        if ($.session.get("login")) {
             $.session.remove("login");
             $.session.remove("userid");
             $.session.remove("name");
@@ -15,7 +15,7 @@ $(document).ready(function () {
         var role = $("#role").get(0).value;
         var password = $("#password").get(0).value;
         $.post(
-            "http://localhost/dts_api/dtsapi/DocTS/api/public/login",
+            "https://dts4d.fusiontechph.com/api/public/login",
             JSON.stringify({
                 email: email,
                 role: role,
