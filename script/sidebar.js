@@ -94,6 +94,7 @@ $(document).ready(function () {
                 processData: false,
                 success: function (response) {
                     if (response != 0) {
+                        alert(response);
                         $("#profile-img").attr("src", response);
                         $(".preview img").show(); // Display image element
                         $.post(

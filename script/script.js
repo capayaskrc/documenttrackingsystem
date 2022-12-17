@@ -52,9 +52,7 @@ $(document).ready(function () {
         $("#insert").click(function () {
             var dtnumber = $("#tn").get(0).value;
             var document_title = $("#title").get(0).value;
-            // var doc_type = $("#doctype").get(0).value;
             var document_origin = $("#docorigin").get(0).value;
-            // var date_received = $("#datereceived").get(0).value.toString();
             var date_sent = new Date();
             var document_destination = $("#destination").get(0).value;
             var tag = $("#tag").get(0).value;
@@ -70,8 +68,11 @@ $(document).ready(function () {
                     contentType: false,
                     processData: false,
                     success: function (response) {
+                        // alert(response);
+                        var doc_type = response.substring(response.lastIndexOf('.') + 1, response.length) || response;
+                        // alert(doc_type);
                         if (response != 0) {
-                            var doc_type = response.substring(response.lastIndexOf('.') + 1, response.length) || response;
+                            // alert(response);
                             $.post("https://dts4d.fusiontechph.com/api/public/insertDoc",
                                 JSON.stringify({
                                     dtnumber: dtnumber,

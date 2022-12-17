@@ -54,7 +54,7 @@ $(document).ready(function () {
             var email = $("#email").get(0).value;
             var school = $("#school").get(0).value;
             // var tag = $("#tag").get(0).value;
-            $.post("https://dts4d.fusiontechph.com/api/public//addUser",
+            $.post("https://dts4d.fusiontechph.com/api/public/addUser",
                 JSON.stringify({
                     id: id,
                     username: username,
